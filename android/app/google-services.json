@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "71760861953",
+    "project_id": "final-grip-app",
+    "storage_bucket": "final-grip-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:71760861953:android:86fc34ee22791dc2711900",
+        "android_client_info": {
+          "package_name": "com.example.final_grip_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "71760861953-7b0idadg6c0ham3km6v238bio2vnvaa9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7q0M7Q9Mb07vP-XulUd6uAyIKG_CG4rE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "71760861953-7b0idadg6c0ham3km6v238bio2vnvaa9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
