@@ -1,10 +1,11 @@
 import 'package:andrea_project/app/app_sign_in/sign_in_page.dart';
-import 'package:andrea_project/app/home/main_menu_page.dart';
 import 'package:andrea_project/services/auth.dart';
 import 'package:andrea_project/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'main_menu/main_menu_page.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage();

@@ -1,6 +1,6 @@
+import 'package:andrea_project/app/models/training_day.dart';
 import 'package:andrea_project/services/api_path.dart';
 import 'package:flutter/foundation.dart';
-import 'package:andrea_project/app/home/models/training_day.dart';
 
 import 'firestore_service.dart';
 
@@ -12,6 +12,7 @@ abstract class Database {
   List<TrainingDay> createTrainingDayList();
   void createTrainingPlan(List<TrainingDay> trainingDays);
   Future<bool> hasPlan();
+  void deleteTrainingPlan();
 }
 
 String get documentIdFromCurrentDate => DateTime.now().toIso8601String();
@@ -50,9 +51,11 @@ class FirestoreDatabase implements Database {
   //       }).toList());
   // }
 
-  Stream<List<TrainingDay>> trainingDaysStream() => _service.trainingDaysStream(
-      path: APIPath.trainingdays(uid),
-      builder: (data, documentId) => TrainingDay.fromMap(data, documentId));
+  Stream<List<TrainingDay>> trainingDaysStream() {
+    return _service.trainingDaysStream(
+        path: APIPath.trainingdays(uid),
+        builder: (data, documentId) => TrainingDay.fromMap(data, documentId));
+  }
 
   List<TrainingDay> createTrainingDayList() {
     List<String> planDays = [];
@@ -63,7 +66,10 @@ class FirestoreDatabase implements Database {
     print(planDays);
     for (String day in planDays) {
       trainingDayList.add(TrainingDay(
-          name: 'TestBatch', day: day, trainingTimes: [1, 2], complete: false));
+          name: 'TestBatch',
+          day: day,
+          workout: [5, 10, 5, 10, 5],
+          complete: false));
     }
     print('here is the training day list $trainingDayList');
     print(' here is the plan day list $planDays');
@@ -76,6 +82,12 @@ class FirestoreDatabase implements Database {
         data: trainingDay.toMap(),
         path: APIPath.trainingday(uid, trainingDay.day),
       );
+  }
+
+  @override
+  void deleteTrainingPlan() {
+    String path = APIPath.trainingdays(uid);
+    _service.deleteTrainingPlan(path: path);
   }
 
   List _trainingDays = [

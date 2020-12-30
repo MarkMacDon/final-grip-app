@@ -2,7 +2,7 @@ import 'package:andrea_project/app/app_sign_in/validators.dart';
 import 'package:andrea_project/services/auth.dart';
 import 'package:flutter/foundation.dart';
 
-import 'email_sign_in_model.dart';
+import '../../not_in_use/email_sign_in_model.dart';
 
 class EmailSignInChangeModel with EmailAndPasswordValidators, ChangeNotifier {
   EmailSignInChangeModel(

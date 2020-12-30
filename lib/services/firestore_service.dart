@@ -11,8 +11,16 @@ class FirestoreService {
 
   Future<void> setData({String path, Map<String, dynamic> data}) async {
     final reference = FirebaseFirestore.instance.doc(path);
-    print('$path: $data');
     await reference.set(data);
+  }
+
+  Future<void> deleteTrainingPlan({@required String path}) async {
+    final reference = FirebaseFirestore.instance.collection(path);
+    reference.get().then((snapshot) {
+      for (DocumentSnapshot ds in snapshot.docs) {
+        ds.reference.delete();
+      }
+    });
   }
 
   Stream<List<T>> trainingDaysStream<T>(
